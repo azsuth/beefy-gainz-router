@@ -8,7 +8,7 @@ env:
     - SHA=$(git rev-parse HEAD)
 
 script:
-  - docker image build -t azsuth/beefy-gainz-router:latest -t azsuth/beefy-gainz-router:$SHA .
+  - docker image build -t $DOCKER_USERNAME/$DOCKER_IMAGE:latest -t $DOCKER_USERNAME/$DOCKER_IMAGE:$SHA .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push azsuth/beefy-gainz-router:latest
-  - docker push azsuth/beefy-gainz-router:$SHA
+  - docker push $DOCKER_USERNAME/$DOCKER_IMAGE:latest
+  - docker push $DOCKER_USERNAME/$DOCKER_IMAGE:$SHA
